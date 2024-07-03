@@ -13,6 +13,7 @@ endif
 
 
 CC=gcc  # gcc or g++
+LD=ld.lld
 CFLAGS+=-ggdb3 -Os
 LDFLAGS+=-Wl,--gc-sections
 CFLAGS+=-ggdb3 -Wall -DNORMALUNIX -DLINUX -DSNDSERV -D_DEFAULT_SOURCE # -DUSEASM

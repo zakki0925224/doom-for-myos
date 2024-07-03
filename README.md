@@ -9,11 +9,11 @@ To try it you will need a WAD file (game data). If you don't own the game, share
 
 Create a file named doomgeneric_yourplatform.c and just implement these functions to suit your platform.
 
-- DG_Init
-- DG_DrawFrame
-- DG_SleepMs
-- DG_GetTicksMs
-- DG_GetKey
+-   DG_Init
+-   DG_DrawFrame
+-   DG_SleepMs
+-   DG_GetTicksMs
+-   DG_GetKey
 
 | Functions         | Description                                                                         |
 | ----------------- | ----------------------------------------------------------------------------------- |
