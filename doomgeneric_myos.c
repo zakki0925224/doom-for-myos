@@ -1,4 +1,4 @@
-#include "../../../apps/libm/libm.h"
+#include "../../apps/libm/libm.h"
 #include "doomgeneric.h"
 
 void DG_Init()
@@ -23,7 +23,7 @@ int DG_GetKey(int *pressed, unsigned char *doomKey)
     return 0;
 }
 
-void _start(int argc, char *argv[])
+int main(int argc, char **argv)
 {
     doomgeneric_Create(argc, argv);
 
@@ -32,5 +32,5 @@ void _start(int argc, char *argv[])
         doomgeneric_Tick();
     }
 
-    sys_exit(0);
+    return 0;
 }
