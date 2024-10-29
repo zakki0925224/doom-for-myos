@@ -14,9 +14,9 @@ endif
 
 CC=gcc  # gcc or g++
 LD=ld.lld
-CFLAGS+=-O2 -Wall -g -m64 -nostdlib -fno-builtin -std=c11 -DARCH_MYOS=1
-LDFLAGS+=-z norelro --static
-LIBS+=-L../../../apps/libm -lm
+CFLAGS=-O2 -Wall -g -m64 -nostdlib -fno-builtin -std=c11 -DARCH_MYOS=1
+LDFLAGS=-z norelro --static
+LIBS=-L../../../apps/libm -lm
 
 # subdirectory for objects
 OBJDIR=build
