@@ -19,7 +19,12 @@
 #ifndef __W_FILE__
 #define __W_FILE__
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
+#endif
+
 #include "doomtype.h"
 
 typedef struct _wad_file_s wad_file_t;

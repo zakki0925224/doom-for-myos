@@ -13,12 +13,16 @@
 // GNU General Public License for more details.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
 #include <string.h>
 #include <fcntl.h>
 #include <stdio.h>
+#endif
 
 #include "config.h"
 #include "deh_str.h"

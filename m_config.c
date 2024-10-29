@@ -17,11 +17,15 @@
 //    Configuration file interface.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <ctype.h>
+#include <string.h>
 #include <errno.h>
+#endif
 
 #include "config.h"
 
@@ -93,8 +97,7 @@ typedef struct
 
 #define CONFIG_VARIABLE_GENERIC(name, type) \
     {                                       \
-        #name, NULL, type, 0, 0, false      \
-    }
+        #name, NULL, type, 0, 0, false}
 
 #define CONFIG_VARIABLE_KEY(name) \
     CONFIG_VARIABLE_GENERIC(name, DEFAULT_KEY)

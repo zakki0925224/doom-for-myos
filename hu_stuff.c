@@ -15,7 +15,11 @@
 // DESCRIPTION:  Heads-up displays
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <ctype.h>
+#endif
 
 #include "doomdef.h"
 #include "doomkeys.h"

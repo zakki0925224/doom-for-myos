@@ -39,9 +39,13 @@ static const char
 #include "doomgeneric.h"
 
 #include <stdbool.h>
-#include <stdlib.h>
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <fcntl.h>
+#include <stdlib.h>
+#endif
 
 #include <stdarg.h>
 

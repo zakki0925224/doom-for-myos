@@ -19,7 +19,11 @@
 #ifndef __P_SAVEG__
 #define __P_SAVEG__
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
+#endif
 
 // maximum size of a savegame description
 

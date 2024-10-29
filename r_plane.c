@@ -18,8 +18,12 @@
 //	Moreover, the sky areas have to be determined.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
 #include <stdlib.h>
+#endif
 
 #include "i_system.h"
 #include "z_zone.h"

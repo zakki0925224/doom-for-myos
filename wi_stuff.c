@@ -16,7 +16,11 @@
 //	Intermission screens.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
+#endif
 
 #include "z_zone.h"
 
@@ -207,11 +211,9 @@ static point_t lnodes[NUMEPISODES][NUMMAPS] =
 //  as they replace 320x200 full screen frames.
 //
 
-#define ANIM(type, period, nanims, x, y, nexttic)          \
-    {                                                      \
-        (type), (period), (nanims), {(x), (y)}, (nexttic), \
-            0, {NULL, NULL, NULL}, 0, 0, 0, 0              \
-    }
+#define ANIM(type, period, nanims, x, y, nexttic) \
+    {                                             \
+        (type), (period), (nanims), {(x), (y)}, (nexttic), 0, {NULL, NULL, NULL}, 0, 0, 0, 0}
 
 static anim_t epsd0animinfo[] =
     {

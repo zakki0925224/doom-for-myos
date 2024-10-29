@@ -19,7 +19,12 @@
 // Events can be discarded if no responder claims them
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdlib.h>
+#endif
+
 #include "d_event.h"
 
 #define MAXEVENTS 64

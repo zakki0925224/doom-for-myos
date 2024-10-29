@@ -16,7 +16,11 @@
 //	WAD I/O functions.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
+#endif
 
 #include "config.h"
 

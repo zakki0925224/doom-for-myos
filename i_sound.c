@@ -15,8 +15,12 @@
 // DESCRIPTION:  none
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
 #include <stdlib.h>
+#endif
 
 #if defined(FEATURE_SOUND) && !defined(__DJGPP__)
 #include <SDL_mixer.h>

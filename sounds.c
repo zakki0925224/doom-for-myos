@@ -17,7 +17,11 @@
 //	Kept as a sample, DOOM2 sounds.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdlib.h>
+#endif
 
 #include "doomtype.h"
 #include "sounds.h"
@@ -26,10 +30,9 @@
 // Information about all the music
 //
 
-#define MUSIC(name)         \
-    {                       \
-        name, 0, NULL, NULL \
-    }
+#define MUSIC(name) \
+    {               \
+        name, 0, NULL, NULL}
 
 musicinfo_t S_music[] =
     {
@@ -106,14 +109,12 @@ musicinfo_t S_music[] =
 // Information about all the sfx
 //
 
-#define SOUND(name, priority)                              \
+#define SOUND(name, priority) \
+    {                         \
+        NULL, name, priority, NULL, -1, -1, 0, 0, -1, NULL}
+#define SOUND_LINK(name, priority, link_id, pitch, volume) \
     {                                                      \
-        NULL, name, priority, NULL, -1, -1, 0, 0, -1, NULL \
-    }
-#define SOUND_LINK(name, priority, link_id, pitch, volume)                   \
-    {                                                                        \
-        NULL, name, priority, &S_sfx[link_id], pitch, volume, 0, 0, -1, NULL \
-    }
+        NULL, name, priority, &S_sfx[link_id], pitch, volume, 0, 0, -1, NULL}
 
 sfxinfo_t S_sfx[] =
     {

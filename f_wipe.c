@@ -16,7 +16,11 @@
 //	Mission begin melt/wipe screen special effect.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <string.h>
+#endif
 
 #include "z_zone.h"
 #include "i_video.h"

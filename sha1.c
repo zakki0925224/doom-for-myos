@@ -28,10 +28,14 @@
  *  8498 3E44 1C3B D26E BAAE  4AA1 F951 29E5 E546 70F1
  */
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <assert.h>
+#include <string.h>
+#endif
 
 #include "i_swap.h"
 #include "sha1.h"

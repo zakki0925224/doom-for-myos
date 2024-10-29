@@ -19,9 +19,13 @@
 //	Functions to blit a block to the screen.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#endif
 
 #include "i_system.h"
 

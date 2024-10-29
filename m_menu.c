@@ -17,8 +17,12 @@
 //	Sliders and icons. Kinda widget stuff.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdlib.h>
 #include <ctype.h>
+#endif
 
 #include "doomdef.h"
 #include "doomkeys.h"

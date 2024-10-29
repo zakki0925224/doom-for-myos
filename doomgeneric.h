@@ -1,7 +1,12 @@
 #ifndef DOOM_GENERIC
 #define DOOM_GENERIC
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdlib.h>
+#endif
+
 #include <stdint.h>
 
 #ifndef DOOMGENERIC_RESX

@@ -16,7 +16,11 @@
 // DESCRIPTION:  the automap code
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
+#endif
 
 #include "deh_main.h"
 

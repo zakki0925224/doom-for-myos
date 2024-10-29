@@ -20,10 +20,14 @@
 //     DMXGUS lump into an equivalent Timidity configuration file.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <ctype.h>
+#include <string.h>
+#endif
 
 #include "w_wad.h"
 #include "z_zone.h"

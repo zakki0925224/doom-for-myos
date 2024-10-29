@@ -17,7 +17,11 @@
 //	Switches, buttons. Two-state animation. Exits.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
+#endif
 
 #include "i_system.h"
 #include "deh_main.h"

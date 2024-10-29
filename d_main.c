@@ -19,10 +19,14 @@
 //	and call the startup functions.
 //
 
-#include <ctype.h>
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <string.h>
+#endif
 
 #include "config.h"
 #include "deh_main.h"

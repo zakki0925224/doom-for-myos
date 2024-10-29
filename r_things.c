@@ -16,8 +16,12 @@
 //	Refresh of things, i.e. objects represented by sprites.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
 #include <stdlib.h>
+#endif
 
 #include "deh_main.h"
 #include "doomdef.h"

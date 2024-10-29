@@ -16,8 +16,12 @@
 //	The status bar widget code.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
 #include <ctype.h>
+#endif
 
 #include "deh_main.h"
 #include "doomdef.h"

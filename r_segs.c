@@ -16,8 +16,12 @@
 //	All the clipping: columns, horizontal spans, sky columns.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
 #include <stdlib.h>
+#endif
 
 #include "i_system.h"
 

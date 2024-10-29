@@ -18,8 +18,12 @@
 //	This one is the original DOOM version, preserved.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
 #include <stdlib.h>
+#endif
 
 // Data.
 #include "sounds.h"

@@ -16,7 +16,11 @@
 //	Cheat sequence checking.
 //
 
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <string.h>
+#endif
 
 #include "doomtype.h"
 #include "m_cheat.h"

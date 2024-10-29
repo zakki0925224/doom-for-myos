@@ -16,10 +16,14 @@
 //	Handles WAD file header, directory, lump I/O.
 //
 
-#include <ctype.h>
+#ifdef ARCH_MYOS
+#include "../../apps/libm/libm.h"
+#else
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <string.h>
+#endif
 
 #include "doomtype.h"
 
