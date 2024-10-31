@@ -23,6 +23,10 @@ int DG_GetKey(int *pressed, unsigned char *doomKey)
     return 0;
 }
 
+void DG_SetWindowTitle(const char *title)
+{
+}
+
 int main(int argc, char **argv)
 {
     doomgeneric_Create(argc, argv);

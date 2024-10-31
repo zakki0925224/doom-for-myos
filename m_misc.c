@@ -77,13 +77,15 @@ boolean M_FileExists(char *filename)
         fclose(fstream);
         return true;
     }
-    else
-    {
-        // If we can't open because the file is a directory, the
-        // "file" exists at least!
 
-        return errno == EISDIR;
-    }
+    return false;
+    // else
+    // {
+    //     // If we can't open because the file is a directory, the
+    //     // "file" exists at least!
+
+    //     return errno == EISDIR;
+    // }
 }
 
 //

@@ -15,10 +15,6 @@
 // DESCRIPTION:  none
 //
 
-#include <string.h>
-#include <stdlib.h>
-#include <math.h>
-
 #ifdef ARCH_MYOS
 #include "../../apps/libm/libm.h"
 #else
