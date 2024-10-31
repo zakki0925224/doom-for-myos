@@ -422,8 +422,8 @@ void EV_VerticalDoor(line_t *line,
                 {
                     // This isn't a door OR a plat.  Now we're in trouble.
 
-                    fprintf(stderr, "EV_VerticalDoor: Tried to close "
-                                    "something that wasn't a door.\n");
+                    // fprintf(stderr, "EV_VerticalDoor: Tried to close "
+                    //                 "something that wasn't a door.\n");
 
                     // Try closing it anyway. At least it will work on 32-bit
                     // machines.

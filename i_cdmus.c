@@ -103,7 +103,7 @@ void I_CDMusPrintStartup(void)
 
     if (startup_error != NULL)
     {
-        fprintf(stderr, "I_CDMusInit: %s\n", startup_error);
+        // fprintf(stderr, "I_CDMusInit: %s\n", startup_error);
     }
 #endif
 }

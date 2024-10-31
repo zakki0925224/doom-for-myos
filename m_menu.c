@@ -914,8 +914,8 @@ void M_Episode(int choice)
     // Yet another hack...
     if ((gamemode == registered) && (choice > 2))
     {
-        fprintf(stderr,
-                "M_Episode: 4th episode requires UltimateDOOM\n");
+        // fprintf(stderr,
+        //         "M_Episode: 4th episode requires UltimateDOOM\n");
         choice = 0;
     }
 

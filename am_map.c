@@ -987,7 +987,7 @@ void AM_drawFline(fline_t *fl,
     // For debugging only
     if (fl->a.x < 0 || fl->a.x >= f_w || fl->a.y < 0 || fl->a.y >= f_h || fl->b.x < 0 || fl->b.x >= f_w || fl->b.y < 0 || fl->b.y >= f_h)
     {
-        DEH_fprintf(stderr, "fuck %d \r", fuck++);
+        // DEH_fprintf(stderr, "fuck %d \r", fuck++);
         return;
     }
 

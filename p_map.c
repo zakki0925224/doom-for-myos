@@ -1382,9 +1382,9 @@ static void SpechitOverrun(line_t *ld)
         nofit = addr;
         break;
     default:
-        fprintf(stderr, "SpechitOverrun: Warning: unable to emulate"
-                        "an overrun where numspechit=%i\n",
-                numspechit);
+        // fprintf(stderr, "SpechitOverrun: Warning: unable to emulate"
+        //                 "an overrun where numspechit=%i\n",
+        //         numspechit);
         break;
     }
 }

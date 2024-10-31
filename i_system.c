@@ -365,7 +365,7 @@ void I_Error(char *error, ...)
 
     if (already_quitting)
     {
-        fprintf(stderr, "Warning: recursive call to I_Error detected.\n");
+        // fprintf(stderr, "Warning: recursive call to I_Error detected.\n");
 #if ORIGCODE
         exit(-1);
 #endif
@@ -378,10 +378,10 @@ void I_Error(char *error, ...)
     // Message first.
     va_start(argptr, error);
     // fprintf(stderr, "\nError: ");
-    vfprintf(stderr, error, argptr);
-    fprintf(stderr, "\n\n");
+    // vfprintf(stderr, error, argptr);
+    // fprintf(stderr, "\n\n");
     va_end(argptr);
-    fflush(stderr);
+    // fflush(stderr);
 
     // Write a copy of the message into buffer.
     va_start(argptr, error);
