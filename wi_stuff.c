@@ -16,11 +16,7 @@
 //	Intermission screens.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
-#endif
 
 #include "z_zone.h"
 

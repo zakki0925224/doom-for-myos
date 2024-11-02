@@ -18,11 +18,7 @@
 #ifndef DEH_STR_H
 #define DEH_STR_H
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
-#endif
 
 #include "doomfeatures.h"
 

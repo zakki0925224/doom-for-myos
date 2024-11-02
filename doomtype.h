@@ -30,11 +30,7 @@
 
 #else
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <strings.h>
-#endif
 
 #endif
 

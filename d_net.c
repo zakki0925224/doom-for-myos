@@ -17,11 +17,7 @@
 //	all OS independend parts.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdlib.h>
-#endif
 
 #include "doomfeatures.h"
 

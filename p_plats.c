@@ -16,11 +16,7 @@
 //	Plats (i.e. elevator platforms) code, raising/lowering.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
-#endif
 
 #include "i_system.h"
 #include "z_zone.h"

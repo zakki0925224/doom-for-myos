@@ -20,12 +20,8 @@
 #ifndef __DOOMDEF__
 #define __DOOMDEF__
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
 #include <string.h>
-#endif
 
 #include "doomtype.h"
 #include "i_timer.h"

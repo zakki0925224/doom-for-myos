@@ -20,11 +20,7 @@
 //	Line Tag handling. Line and Sector triggers.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdlib.h>
-#endif
 
 #include "doomdef.h"
 #include "doomstat.h"

@@ -17,11 +17,7 @@
 //	generation of lookups, caching, retrieval by name.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
-#endif
 
 #include "deh_main.h"
 #include "i_swap.h"

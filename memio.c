@@ -16,13 +16,9 @@
 // memory.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#endif
 
 #include "memio.h"
 

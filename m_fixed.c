@@ -16,11 +16,7 @@
 //	Fixed point implementation.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdlib.h>
-#endif
 
 #include "doomtype.h"
 #include "i_system.h"

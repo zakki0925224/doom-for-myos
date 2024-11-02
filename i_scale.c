@@ -18,13 +18,9 @@
 //         Aspect ratio-correcting stretch functions
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#endif
 
 #include "doomtype.h"
 

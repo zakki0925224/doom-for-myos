@@ -19,13 +19,9 @@ buffer to a file.
 
 */
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#endif
 
 #include "d_player.h"
 #include "d_mode.h"

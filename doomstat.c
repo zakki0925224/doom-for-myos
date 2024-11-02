@@ -16,11 +16,7 @@
 //	Put all global tate variables here.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
-#endif
 
 #include "doomstat.h"
 

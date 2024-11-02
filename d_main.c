@@ -19,14 +19,10 @@
 //	and call the startup functions.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#endif
 
 #include "config.h"
 #include "deh_main.h"
@@ -1278,7 +1274,7 @@ void D_DoomMain(void)
     if (devparm)
         DEH_printf(D_DEVSTR);
 
-        // find which dir to use for config files
+    // find which dir to use for config files
 
 #ifdef _WIN32
 

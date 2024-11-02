@@ -16,11 +16,7 @@
 // SDL implementation of the Hexen CD interface.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
-#endif
 
 #ifdef ORIGCODE
 #include "SDL2/SDL.h"

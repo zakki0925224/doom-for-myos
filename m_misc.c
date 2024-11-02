@@ -17,15 +17,11 @@
 //      Miscellaneous.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
 #include <errno.h>
-#endif
 
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN

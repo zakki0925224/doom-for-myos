@@ -15,14 +15,10 @@
 // DESCRIPTION:
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#endif
 
 #include "doomtype.h"
 #include "i_system.h"

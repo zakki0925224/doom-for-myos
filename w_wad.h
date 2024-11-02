@@ -19,11 +19,7 @@
 #ifndef __W_WAD__
 #define __W_WAD__
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
-#endif
 
 #include "doomtype.h"
 #include "d_mode.h"

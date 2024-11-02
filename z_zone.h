@@ -22,11 +22,7 @@
 #ifndef __Z_ZONE__
 #define __Z_ZONE__
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
-#endif
 
 //
 // ZONE MEMORY

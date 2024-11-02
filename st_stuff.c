@@ -18,11 +18,7 @@
 //	Does palette indicators as well (red pain/berserk, bright pickup)
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
-#endif
 
 #include "i_system.h"
 #include "i_video.h"

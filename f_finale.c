@@ -16,12 +16,8 @@
 //	Game completion, final screen animation.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
 #include <ctype.h>
-#endif
 
 // Functions.
 #include "deh_main.h"

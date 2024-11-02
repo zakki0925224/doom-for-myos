@@ -16,12 +16,8 @@
 //     Main loop code.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdlib.h>
 #include <string.h>
-#endif
 
 #include "doomfeatures.h"
 

@@ -14,11 +14,7 @@
 // GNU General Public License for more details.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
-#endif
 
 #include "doomtype.h"
 #include "doomkeys.h"

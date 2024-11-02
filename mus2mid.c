@@ -16,11 +16,7 @@
 // mus2mid.c - Ben Ryves 2006 - http://benryves.com - benryves@benryves.com
 // Use to convert a MUS file into a single track, type 0 MIDI file.
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
-#endif
 
 #include "doomtype.h"
 #include "i_swap.h"

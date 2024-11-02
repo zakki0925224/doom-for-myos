@@ -19,12 +19,7 @@
 #ifndef __M_MISC__
 #define __M_MISC__
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
-#endif
-
 #include <stdarg.h>
 
 #include "doomtype.h"

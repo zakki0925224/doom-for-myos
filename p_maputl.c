@@ -20,11 +20,7 @@
 //	and some PIT_* functions to use for iteration.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdlib.h>
-#endif
 
 #include "m_bbox.h"
 

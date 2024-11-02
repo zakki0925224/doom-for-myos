@@ -16,12 +16,8 @@
 //	Archiving: SaveGame I/O.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdio.h>
 #include <stdlib.h>
-#endif
 
 #include "dstrings.h"
 #include "deh_main.h"

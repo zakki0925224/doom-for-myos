@@ -18,12 +18,8 @@
 //	See tables.c, too.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <stdlib.h>
 #include <math.h>
-#endif
 
 #include "doomdef.h"
 #include "d_loop.h"

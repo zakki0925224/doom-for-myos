@@ -39,16 +39,9 @@ static const char
 #include "doomgeneric.h"
 
 #include <stdbool.h>
-
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <fcntl.h>
 #include <stdlib.h>
-#endif
-
 #include <stdarg.h>
-
 #include <sys/types.h>
 
 // #define CMAP256

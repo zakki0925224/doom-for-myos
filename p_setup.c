@@ -17,11 +17,7 @@
 //	set up initial state and misc. LUTs.
 //
 
-#ifdef ARCH_MYOS
-#include "../../apps/libm/libm.h"
-#else
 #include <math.h>
-#endif
 
 #include "z_zone.h"
 
