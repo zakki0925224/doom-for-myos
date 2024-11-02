@@ -14,7 +14,7 @@ endif
 
 CC=gcc  # gcc or g++
 LD=ld.lld
-CFLAGS=-O2 -Wall -g -m64 -nostdlib -fno-builtin -std=c11
+CFLAGS=-I ../../apps/libc -O2 -Wall -g -m64 -nostdlib -fno-builtin -std=c11
 LDFLAGS=-z norelro --static
 
 LIBDIR := ../../apps/libc

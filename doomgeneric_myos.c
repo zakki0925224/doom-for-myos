@@ -1,4 +1,5 @@
-#include "../../apps/libm/libm.h"
+#include <stdio.h>
+
 #include "doomgeneric.h"
 
 void DG_Init()
@@ -31,10 +32,10 @@ int main(int argc, char **argv)
 {
     doomgeneric_Create(argc, argv);
 
-    // while (1)
-    // {
-    //     doomgeneric_Tick();
-    // }
+    while (1)
+    {
+        doomgeneric_Tick();
+    }
 
     return 0;
 }
