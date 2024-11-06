@@ -15,7 +15,7 @@ endif
 CC=gcc  # gcc or g++
 LD=ld.lld
 CFLAGS=-I ../../apps/libc -O2 -Wall -g -m64 -nostdlib -fno-builtin -std=c11
-LDFLAGS=-z norelro --static
+LDFLAGS=-z norelro --static --image-base=0x10000000
 
 LIBDIR := ../../apps/libc
 LIB := -L$(LIBDIR) -lc
