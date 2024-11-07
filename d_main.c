@@ -327,16 +327,25 @@ void D_BindVariables(void)
     int i;
 
     M_ApplyPlatformDefaults();
+    printf("a\n");
 
     I_BindVideoVariables();
+    printf("b\n");
     I_BindJoystickVariables();
+    printf("c\n");
     I_BindSoundVariables();
+    printf("d\n");
 
     M_BindBaseControls();
+    printf("e\n");
     M_BindWeaponControls();
+    printf("f\n");
     M_BindMapControls();
+    printf("g\n");
     M_BindMenuControls();
+    printf("h\n");
     M_BindChatControls(MAXPLAYERS);
+    printf("i\n");
 
     key_multi_msgplayer[0] = HUSTR_KEYGREEN;
     key_multi_msgplayer[1] = HUSTR_KEYINDIGO;
@@ -1274,7 +1283,7 @@ void D_DoomMain(void)
     if (devparm)
         DEH_printf(D_DEVSTR);
 
-    // find which dir to use for config files
+        // find which dir to use for config files
 
 #ifdef _WIN32
 

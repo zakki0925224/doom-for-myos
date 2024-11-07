@@ -37,7 +37,8 @@ clean:
 
 $(OUTPUT):	$(OBJS)
 	@echo [Linking $@]
-	$(VB)$(CC) $(CFLAGS) $(LDFLAGS) -o $(OUTPUT) $(OBJS) $(LIB) -Wl,-Map,$(OUTPUT).map
+	make -C $(LIBDIR)
+	$(VB)$(LD) $(OBJS) $(LIB) -o $@ $(LDFLAGS) --Map=$(OUTPUT).map
 	@echo [Size]
 	-$(CROSS_COMPILE)size $(OUTPUT)
 

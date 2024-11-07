@@ -462,9 +462,9 @@ void I_Error(char *error, ...)
 
     exit(-1);
 #else
-    while (true)
-    {
-    }
+    printf("I_Error aborted...\n");
+    printf("error: %s\n", error);
+    exit(-1);
 #endif
 }
 
