@@ -43,6 +43,9 @@ static const char
 #include <stdlib.h>
 #include <stdarg.h>
 #include <sys/types.h>
+#ifdef ARCH_MYOS
+#include <softfloat.h>
+#endif
 
 // #define CMAP256
 
@@ -107,7 +110,7 @@ boolean screenvisible;
 // the values exceed the value of mouse_threshold, they are multiplied
 // by mouse_acceleration to increase the speed.
 
-float mouse_acceleration = 2.0;
+int mouse_acceleration = 2;
 int mouse_threshold = 10;
 
 // Gamma correction level to use

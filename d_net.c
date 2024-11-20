@@ -57,7 +57,7 @@ static void PlayerQuitGame(player_t *player)
 
     exitmsg[7] += player_num;
 
-    playeringame[player_num] = false;
+    playeringame[player_num] = FALSE;
     players[consoleplayer].message = exitmsg;
 
     // TODO: check if it is sensible to do this:
@@ -156,7 +156,7 @@ static void SaveGameSettings(net_gamesettings_t *settings)
 static void InitConnectData(net_connect_data_t *connect_data)
 {
     connect_data->max_players = MAXPLAYERS;
-    connect_data->drone = false;
+    connect_data->drone = FALSE;
 
     //!
     // @category net
@@ -167,7 +167,7 @@ static void InitConnectData(net_connect_data_t *connect_data)
     if (M_CheckParm("-left") > 0)
     {
         viewangleoffset = ANG90;
-        connect_data->drone = true;
+        connect_data->drone = TRUE;
     }
 
     //!
@@ -179,7 +179,7 @@ static void InitConnectData(net_connect_data_t *connect_data)
     if (M_CheckParm("-right") > 0)
     {
         viewangleoffset = ANG270;
-        connect_data->drone = true;
+        connect_data->drone = TRUE;
     }
 
     //
@@ -225,7 +225,7 @@ void D_ConnectNetGame(void)
 
     if (M_CheckParm("-solo-net") > 0)
     {
-        netgame = true;
+        netgame = TRUE;
     }
 }
 
@@ -239,7 +239,7 @@ void D_CheckNetGame(void)
 
     if (netgame)
     {
-        autostart = true;
+        autostart = TRUE;
     }
 
     D_RegisterLoopCallbacks(&doom_loop_interface);

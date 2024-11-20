@@ -71,10 +71,10 @@ boolean M_FileExists(char *filename)
     if (fstream != NULL)
     {
         fclose(fstream);
-        return true;
+        return TRUE;
     }
 
-    return false;
+    return FALSE;
     // else
     // {
     //     // If we can't open because the file is a directory, the
@@ -118,15 +118,15 @@ boolean M_WriteFile(char *name, void *source, int length)
     handle = fopen(name, "wb");
 
     if (handle == NULL)
-        return false;
+        return FALSE;
 
     count = fwrite(source, 1, length, handle);
     fclose(handle);
 
     if (count < length)
-        return false;
+        return FALSE;
 
-    return true;
+    return TRUE;
 }
 
 //
@@ -380,7 +380,7 @@ boolean M_StringCopy(char *dest, const char *src, size_t dest_size)
     }
     else
     {
-        return false;
+        return FALSE;
     }
 
     len = strlen(dest);

@@ -264,7 +264,7 @@ P_UseSpecialLine(mobj_t *thing,
             break;
 
         default:
-            return false;
+            return FALSE;
             break;
         }
     }
@@ -274,7 +274,7 @@ P_UseSpecialLine(mobj_t *thing,
     {
         // never open secret doors
         if (line->flags & ML_SECRET)
-            return false;
+            return FALSE;
 
         switch (line->special)
         {
@@ -285,7 +285,7 @@ P_UseSpecialLine(mobj_t *thing,
             break;
 
         default:
-            return false;
+            return FALSE;
             break;
         }
     }
@@ -619,5 +619,5 @@ P_UseSpecialLine(mobj_t *thing,
         break;
     }
 
-    return true;
+    return TRUE;
 }

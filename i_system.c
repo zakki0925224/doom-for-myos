@@ -350,7 +350,7 @@ static int ZenityErrorBox(char *message)
 // I_Error
 //
 
-static boolean already_quitting = false;
+static boolean already_quitting = FALSE;
 
 void I_Error(char *error, ...)
 {
@@ -368,7 +368,7 @@ void I_Error(char *error, ...)
     }
     else
     {
-        already_quitting = true;
+        already_quitting = TRUE;
     }
 
     // Message first.
@@ -499,13 +499,13 @@ static const unsigned char *dos_mem_dump = mem_dump_dos622;
 
 boolean I_GetMemoryValue(unsigned int offset, void *value, int size)
 {
-    static boolean firsttime = true;
+    static boolean firsttime = TRUE;
 
     if (firsttime)
     {
         int p, i, val;
 
-        firsttime = false;
+        firsttime = FALSE;
         i = 0;
 
         //!
@@ -557,14 +557,14 @@ boolean I_GetMemoryValue(unsigned int offset, void *value, int size)
     {
     case 1:
         *((unsigned char *)value) = dos_mem_dump[offset];
-        return true;
+        return TRUE;
     case 2:
         *((unsigned short *)value) = dos_mem_dump[offset] | (dos_mem_dump[offset + 1] << 8);
-        return true;
+        return TRUE;
     case 4:
         *((unsigned int *)value) = dos_mem_dump[offset] | (dos_mem_dump[offset + 1] << 8) | (dos_mem_dump[offset + 2] << 16) | (dos_mem_dump[offset + 3] << 24);
-        return true;
+        return TRUE;
     }
 
-    return false;
+    return FALSE;
 }

@@ -57,7 +57,7 @@ static const iwad_t iwads[] =
 
 #define MAX_IWAD_DIRS 128
 
-static boolean iwad_dirs_built = false;
+static boolean iwad_dirs_built = FALSE;
 static char *iwad_dirs[MAX_IWAD_DIRS];
 static int num_iwad_dirs = 0;
 
@@ -614,7 +614,7 @@ static void BuildIWADDirList(void)
 
     // Don't run this function again.
 
-    iwad_dirs_built = true;
+    iwad_dirs_built = TRUE;
 #endif
 }
 

@@ -210,7 +210,7 @@ void STlib_initBinIcon(st_binicon_t *b,
 {
     b->x = x;
     b->y = y;
-    b->oldval = false;
+    b->oldval = FALSE;
     b->val = val;
     b->on = on;
     b->p = i;

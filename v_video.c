@@ -22,6 +22,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#ifdef ARCH_MYOS
+#include <softfloat.h>
+#endif
 
 #include "i_system.h"
 
@@ -835,10 +838,18 @@ void V_DrawMouseSpeedBox(int speed)
     // If the mouse is turned off or acceleration is turned off, don't
     // draw the box at all.
 
-    if (!usemouse || fabs(mouse_acceleration - 1) < 0.01)
+#ifdef ARCH_MYOS
+    float32_t mouse_acc_abs = i32_to_f32((mouse_acceleration - 1) & 0x7fffffff);
+    if (!usemouse || f32_lt(mouse_acc_abs, f32_div(i32_to_f32(1), i32_to_f32(100)))) // mouse_acc_abs < 0.01
     {
         return;
     }
+#else
+    if (!usemouse || fabs((float)(mouse_acceleration - 1)) < 0.01)
+    {
+        return;
+    }
+#endif
 
     // Calculate box position
 

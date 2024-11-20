@@ -606,7 +606,7 @@ int setdetail;
 void R_SetViewSize(int blocks,
                    int detail)
 {
-    setsizeneeded = true;
+    setsizeneeded = TRUE;
     setblocks = blocks;
     setdetail = detail;
 }
@@ -623,7 +623,7 @@ void R_ExecuteSetViewSize(void)
     int level;
     int startmap;
 
-    setsizeneeded = false;
+    setsizeneeded = FALSE;
 
     if (setblocks == 11)
     {

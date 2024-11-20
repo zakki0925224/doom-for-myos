@@ -19,6 +19,10 @@
 #include <stdlib.h>
 #include <math.h>
 
+#ifdef ARCH_MYOS
+#include <softfloat.h>
+#endif
+
 #include "doomdef.h"
 #include "doomkeys.h"
 #include "doomstat.h"
@@ -104,14 +108,14 @@ boolean sendpause; // send a pause event next tic
 boolean sendsave;  // send a save event next tic
 boolean usergame;  // ok to save / end game
 
-boolean timingdemo; // if true, exit with report on completion
+boolean timingdemo; // if TRUE, exit with report on completion
 boolean nodrawers;  // for comparative timing purposes
 int starttime;      // for comparative timing purposes
 
 boolean viewactive;
 
 int deathmatch;  // only if started as net death
-boolean netgame; // only true if packets are broadcast
+boolean netgame; // only TRUE if packets are broadcast
 boolean playeringame[MAXPLAYERS];
 player_t players[MAXPLAYERS];
 
@@ -133,9 +137,9 @@ byte *demo_p;
 byte *demoend;
 boolean singledemo; // quit after playing a demo from cmdline
 
-boolean precache = true; // if true, load all graphics at start
+boolean precache = TRUE; // if TRUE, load all graphics at start
 
-boolean testcontrols = false; // Invoked by setup to test controls
+boolean testcontrols = FALSE; // Invoked by setup to test controls
 int testcontrols_mousespeed;
 
 wbstartstruct_t wminfo; // parms for world map / intermission
@@ -238,21 +242,21 @@ static boolean WeaponSelectable(weapontype_t weapon)
 
     if (weapon == wp_supershotgun && logical_gamemission == doom)
     {
-        return false;
+        return FALSE;
     }
 
     // These weapons aren't available in shareware.
 
     if ((weapon == wp_plasma || weapon == wp_bfg) && gamemission == doom && gamemode == shareware)
     {
-        return false;
+        return FALSE;
     }
 
     // Can't select a weapon if we don't own it.
 
     if (!players[consoleplayer].weaponowned[weapon])
     {
-        return false;
+        return FALSE;
     }
 
     // Can't select the fist if we have the chainsaw, unless
@@ -260,10 +264,10 @@ static boolean WeaponSelectable(weapontype_t weapon)
 
     if (weapon == wp_fist && players[consoleplayer].weaponowned[wp_chainsaw] && !players[consoleplayer].powers[pw_strength])
     {
-        return false;
+        return FALSE;
     }
 
-    return true;
+    return TRUE;
 }
 
 static int G_NextWeapon(int direction)
@@ -535,13 +539,13 @@ void G_BuildTiccmd(ticcmd_t *cmd, int maketic)
     // special buttons
     if (sendpause)
     {
-        sendpause = false;
+        sendpause = FALSE;
         cmd->buttons = BT_SPECIAL | BTS_PAUSE;
     }
 
     if (sendsave)
     {
-        sendsave = false;
+        sendsave = FALSE;
         cmd->buttons = BT_SPECIAL | BTS_SAVEGAME | (savegameslot << BTS_SAVESHIFT);
     }
 
@@ -614,7 +618,7 @@ void G_DoLoadLevel(void)
 
     for (i = 0; i < MAXPLAYERS; i++)
     {
-        turbodetected[i] = false;
+        turbodetected[i] = FALSE;
         if (playeringame[i] && players[i].playerstate == PST_DEAD)
             players[i].playerstate = PST_REBORN;
         memset(players[i].frags, 0, sizeof(players[i].frags));
@@ -630,7 +634,7 @@ void G_DoLoadLevel(void)
     memset(gamekeydown, 0, sizeof(gamekeydown));
     joyxmove = joyymove = joystrafemove = 0;
     mousex = mousey = 0;
-    sendpause = sendsave = paused = false;
+    sendpause = sendsave = paused = FALSE;
     memset(mousearray, 0, sizeof(mousearray));
     memset(joyarray, 0, sizeof(joyarray));
 
@@ -710,7 +714,7 @@ boolean G_Responder(event_t *ev)
             if (displayplayer == MAXPLAYERS)
                 displayplayer = 0;
         } while (!playeringame[displayplayer] && displayplayer != consoleplayer);
-        return true;
+        return TRUE;
     }
 
     // any other key pops up menu if in demos
@@ -722,9 +726,9 @@ boolean G_Responder(event_t *ev)
             (ev->type == ev_joystick && ev->data1))
         {
             M_StartControlPanel();
-            return true;
+            return TRUE;
         }
-        return false;
+        return FALSE;
     }
 
     if (gamestate == GS_LEVEL)
@@ -733,21 +737,21 @@ boolean G_Responder(event_t *ev)
 	if (devparm && ev->type == ev_keydown && ev->data1 == ';')
 	{
 	    G_DeathMatchSpawnPlayer (0);
-	    return true;
+	    return TRUE;
 	}
 #endif
         if (HU_Responder(ev))
-            return true; // chat ate the event
+            return TRUE; // chat ate the event
         if (ST_Responder(ev))
-            return true; // status window ate it
+            return TRUE; // status window ate it
         if (AM_Responder(ev))
-            return true; // automap ate it
+            return TRUE; // automap ate it
     }
 
     if (gamestate == GS_FINALE)
     {
         if (F_Responder(ev))
-            return true; // finale ate the event
+            return TRUE; // finale ate the event
     }
 
     if (testcontrols && ev->type == ev_mouse)
@@ -777,38 +781,38 @@ boolean G_Responder(event_t *ev)
     case ev_keydown:
         if (ev->data1 == key_pause)
         {
-            sendpause = true;
+            sendpause = TRUE;
         }
         else if (ev->data1 < NUMKEYS)
         {
-            gamekeydown[ev->data1] = true;
+            gamekeydown[ev->data1] = TRUE;
         }
 
-        return true; // eat key down events
+        return TRUE; // eat key down events
 
     case ev_keyup:
         if (ev->data1 < NUMKEYS)
-            gamekeydown[ev->data1] = false;
-        return false; // always let key up events filter down
+            gamekeydown[ev->data1] = FALSE;
+        return FALSE; // always let key up events filter down
 
     case ev_mouse:
         SetMouseButtons(ev->data1);
         mousex = ev->data2 * (mouseSensitivity + 5) / 10;
         mousey = ev->data3 * (mouseSensitivity + 5) / 10;
-        return true; // eat events
+        return TRUE; // eat events
 
     case ev_joystick:
         SetJoyButtons(ev->data1);
         joyxmove = ev->data2;
         joyymove = ev->data3;
         joystrafemove = ev->data4;
-        return true; // eat events
+        return TRUE; // eat events
 
     default:
         break;
     }
 
-    return false;
+    return FALSE;
 }
 
 //
@@ -892,7 +896,7 @@ void G_Ticker(void)
 
             if (cmd->forwardmove > TURBOTHRESHOLD)
             {
-                turbodetected[i] = true;
+                turbodetected[i] = TRUE;
             }
 
             if ((gametic & 31) == 0 && ((gametic >> 5) % MAXPLAYERS) == i && turbodetected[i])
@@ -902,7 +906,7 @@ void G_Ticker(void)
                 M_snprintf(turbomessage, sizeof(turbomessage),
                            "%s is turbo!", player_names[i]);
                 players[consoleplayer].message = turbomessage;
-                turbodetected[i] = false;
+                turbodetected[i] = FALSE;
             }
 
             if (netgame && !netdemo && !(gametic % ticdup))
@@ -1048,12 +1052,12 @@ void G_PlayerReborn(int player)
     players[player].itemcount = itemcount;
     players[player].secretcount = secretcount;
 
-    p->usedown = p->attackdown = true; // don't do anything immediately
+    p->usedown = p->attackdown = TRUE; // don't do anything immediately
     p->playerstate = PST_LIVE;
     p->health = deh_initial_health; // Use dehacked value
     p->readyweapon = p->pendingweapon = wp_pistol;
-    p->weaponowned[wp_fist] = true;
-    p->weaponowned[wp_pistol] = true;
+    p->weaponowned[wp_fist] = TRUE;
+    p->weaponowned[wp_pistol] = TRUE;
     p->ammo[am_clip] = deh_initial_bullets;
 
     for (i = 0; i < NUMAMMO; i++)
@@ -1062,7 +1066,7 @@ void G_PlayerReborn(int player)
 
 //
 // G_CheckSpot
-// Returns false if the player cannot be respawned
+// Returns FALSE if the player cannot be respawned
 // at the given mapthing_t spot
 // because something is occupying it
 //
@@ -1083,15 +1087,15 @@ G_CheckSpot(int playernum,
         // first spawn of level, before corpses
         for (i = 0; i < playernum; i++)
             if (players[i].mo->x == mthing->x << FRACBITS && players[i].mo->y == mthing->y << FRACBITS)
-                return false;
-        return true;
+                return FALSE;
+        return TRUE;
     }
 
     x = mthing->x << FRACBITS;
     y = mthing->y << FRACBITS;
 
     if (!P_CheckPosition(players[playernum].mo, x, y))
-        return false;
+        return FALSE;
 
     // flush an old corpse if needed
     if (bodyqueslot >= BODYQUESIZE)
@@ -1164,7 +1168,7 @@ G_CheckSpot(int playernum,
     if (players[consoleplayer].viewz != 1)
         S_StartSound(mo, sfx_telept); // don't start sound on first frame
 
-    return true;
+    return TRUE;
 }
 
 //
@@ -1274,7 +1278,7 @@ extern char *pagename;
 
 void G_ExitLevel(void)
 {
-    secretexit = false;
+    secretexit = FALSE;
     gameaction = ga_completed;
 }
 
@@ -1283,9 +1287,9 @@ void G_SecretExitLevel(void)
 {
     // IF NO WOLF3D LEVELS, NO SECRET EXIT!
     if ((gamemode == commercial) && (W_CheckNumForName("map31") < 0))
-        secretexit = false;
+        secretexit = FALSE;
     else
-        secretexit = true;
+        secretexit = TRUE;
     gameaction = ga_completed;
 }
 
@@ -1323,7 +1327,7 @@ void G_DoCompleted(void)
                 return;
             case 9:
                 for (i = 0; i < MAXPLAYERS; i++)
-                    players[i].didsecret = true;
+                    players[i].didsecret = TRUE;
                 break;
             }
         }
@@ -1341,7 +1345,7 @@ void G_DoCompleted(void)
     {
         // exit secret level
         for (i = 0; i < MAXPLAYERS; i++)
-            players[i].didsecret = true;
+            players[i].didsecret = TRUE;
     }
     // #endif
 
@@ -1428,8 +1432,8 @@ void G_DoCompleted(void)
     }
 
     gamestate = GS_INTERMISSION;
-    viewactive = false;
-    automapactive = false;
+    viewactive = FALSE;
+    automapactive = FALSE;
 
     StatCopy(&wminfo);
 
@@ -1444,7 +1448,7 @@ void G_WorldDone(void)
     gameaction = ga_worlddone;
 
     if (secretexit)
-        players[consoleplayer].didsecret = true;
+        players[consoleplayer].didsecret = TRUE;
 
     if (gamemode == commercial)
     {
@@ -1470,7 +1474,7 @@ void G_DoWorldDone(void)
     gamemap = wminfo.next + 1;
     G_DoLoadLevel();
     gameaction = ga_nothing;
-    viewactive = true;
+    viewactive = TRUE;
 }
 
 //
@@ -1503,7 +1507,7 @@ void G_DoLoadGame(void)
         return;
     }
 
-    savegame_error = false;
+    savegame_error = FALSE;
 
     if (!P_ReadSaveGameHeader())
     {
@@ -1546,7 +1550,7 @@ void G_SaveGame(int slot,
 {
     savegameslot = slot;
     M_StringCopy(savedescription, description, sizeof(savedescription));
-    sendsave = true;
+    sendsave = TRUE;
 }
 
 void G_DoSaveGame(void)
@@ -1578,7 +1582,7 @@ void G_DoSaveGame(void)
         }
     }
 
-    savegame_error = false;
+    savegame_error = FALSE;
 
     P_WriteSaveGameHeader(savedescription);
 
@@ -1647,14 +1651,14 @@ void G_DeferedInitNew(skill_t skill,
 
 void G_DoNewGame(void)
 {
-    demoplayback = false;
-    netdemo = false;
-    netgame = false;
-    deathmatch = false;
+    demoplayback = FALSE;
+    netdemo = FALSE;
+    netgame = FALSE;
+    deathmatch = FALSE;
     playeringame[1] = playeringame[2] = playeringame[3] = 0;
-    respawnparm = false;
-    fastparm = false;
-    nomonsters = false;
+    respawnparm = FALSE;
+    fastparm = FALSE;
+    nomonsters = FALSE;
     consoleplayer = 0;
     G_InitNew(d_skill, d_episode, d_map);
     gameaction = ga_nothing;
@@ -1669,7 +1673,7 @@ void G_InitNew(skill_t skill,
 
     if (paused)
     {
-        paused = false;
+        paused = FALSE;
         S_ResumeSound();
     }
 
@@ -1739,9 +1743,9 @@ void G_InitNew(skill_t skill,
     M_ClearRandom();
 
     if (skill == sk_nightmare || respawnparm)
-        respawnmonsters = true;
+        respawnmonsters = TRUE;
     else
-        respawnmonsters = false;
+        respawnmonsters = FALSE;
 
     if (fastparm || (skill == sk_nightmare && gameskill != sk_nightmare))
     {
@@ -1764,16 +1768,16 @@ void G_InitNew(skill_t skill,
     for (i = 0; i < MAXPLAYERS; i++)
         players[i].playerstate = PST_REBORN;
 
-    usergame = true; // will be set false if a demo
-    paused = false;
-    demoplayback = false;
-    automapactive = false;
-    viewactive = true;
+    usergame = TRUE; // will be set FALSE if a demo
+    paused = FALSE;
+    demoplayback = FALSE;
+    automapactive = FALSE;
+    viewactive = TRUE;
     gameepisode = episode;
     gamemap = map;
     gameskill = skill;
 
-    viewactive = true;
+    viewactive = TRUE;
 
     // Set the sky to use.
     //
@@ -1942,7 +1946,7 @@ void G_RecordDemo(char *name)
     int i;
     int maxsize;
 
-    usergame = false;
+    usergame = FALSE;
     demoname_size = strlen(name) + 5;
     demoname = Z_Malloc(demoname_size, PU_STATIC, NULL);
     M_snprintf(demoname, demoname_size, "%s.lmp", name);
@@ -1962,7 +1966,7 @@ void G_RecordDemo(char *name)
     demobuffer = Z_Malloc(maxsize, PU_STATIC, NULL);
     demoend = demobuffer + maxsize;
 
-    demorecording = true;
+    demorecording = TRUE;
 }
 
 // Get the demo version code appropriate for the version set in gameversion.
@@ -2090,12 +2094,12 @@ void G_DoPlayDemo(void)
 
     if (demoversion == G_VanillaVersionCode())
     {
-        longtics = false;
+        longtics = FALSE;
     }
     else if (demoversion == DOOM_191_VERSION)
     {
         // demo recorded with cph's modified "v1.91" doom exe
-        longtics = true;
+        longtics = TRUE;
     }
     else
     {
@@ -2127,18 +2131,18 @@ void G_DoPlayDemo(void)
 
     if (playeringame[1] || M_CheckParm("-solo-net") > 0 || M_CheckParm("-netdemo") > 0)
     {
-        netgame = true;
-        netdemo = true;
+        netgame = TRUE;
+        netdemo = TRUE;
     }
 
     // don't spend a lot of time in loadlevel
-    precache = false;
+    precache = FALSE;
     G_InitNew(skill, episode, map);
-    precache = true;
+    precache = TRUE;
     starttime = I_GetTime();
 
-    usergame = false;
-    demoplayback = true;
+    usergame = FALSE;
+    demoplayback = TRUE;
 }
 
 //
@@ -2154,8 +2158,8 @@ void G_TimeDemo(char *name)
 
     nodrawers = M_CheckParm("-nodraw");
 
-    timingdemo = true;
-    singletics = true;
+    timingdemo = TRUE;
+    singletics = TRUE;
 
     defdemoname = name;
     gameaction = ga_playdemo;
@@ -2167,7 +2171,7 @@ void G_TimeDemo(char *name)
 = G_CheckDemoStatus
 =
 = Called after a death or level completion to allow demos to be cleaned up
-= Returns true if a new demo loop action will take place
+= Returns TRUE if a new demo loop action will take place
 ===================
 */
 
@@ -2177,16 +2181,24 @@ boolean G_CheckDemoStatus(void)
 
     if (timingdemo)
     {
+#ifdef ARCH_MYOS
+        float32_t fps;
+#else
         float fps;
+#endif
         int realtics;
 
         endtime = I_GetTime();
         realtics = endtime - starttime;
-        fps = ((float)gametic * TICRATE) / realtics;
+#ifdef ARCH_MYOS
+        fps = f32_div(i32_to_f32(gametic * TICRATE), i32_to_f32(realtics));
+#else
+        fps = (float)(gametic * TICRATE) / (float)realtics;
+#endif
 
         // Prevent recursive calls
-        timingdemo = false;
-        demoplayback = false;
+        timingdemo = TRUE;
+        demoplayback = FALSE;
 
         I_Error("timed %i gametics in %i realtics (%f fps)",
                 gametic, realtics, fps);
@@ -2195,14 +2207,14 @@ boolean G_CheckDemoStatus(void)
     if (demoplayback)
     {
         W_ReleaseLumpName(defdemoname);
-        demoplayback = false;
-        netdemo = false;
-        netgame = false;
-        deathmatch = false;
+        demoplayback = FALSE;
+        netdemo = FALSE;
+        netgame = FALSE;
+        deathmatch = FALSE;
         playeringame[1] = playeringame[2] = playeringame[3] = 0;
-        respawnparm = false;
-        fastparm = false;
-        nomonsters = false;
+        respawnparm = FALSE;
+        fastparm = FALSE;
+        nomonsters = FALSE;
         consoleplayer = 0;
 
         if (singledemo)
@@ -2210,7 +2222,7 @@ boolean G_CheckDemoStatus(void)
         else
             D_AdvanceDemo();
 
-        return true;
+        return TRUE;
     }
 
     if (demorecording)
@@ -2218,9 +2230,9 @@ boolean G_CheckDemoStatus(void)
         *demo_p++ = DEMOMARKER;
         M_WriteFile(demoname, demobuffer, demo_p - demobuffer);
         Z_Free(demobuffer);
-        demorecording = false;
+        demorecording = FALSE;
         I_Error("Demo %s recorded", demoname);
     }
 
-    return false;
+    return FALSE;
 }
