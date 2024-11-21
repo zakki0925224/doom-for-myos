@@ -60,10 +60,16 @@ void DG_Init()
     init_ticks_ms = (uint32_t)sys_uptime();
 
     // window
-    wdesc = create_window("DOOM", 0, 0, 320, 200);
+    wdesc = create_window("DOOM", 0, 0, DOOMGENERIC_RESX + 10, DOOMGENERIC_RESY + 20);
     if (wdesc == NULL)
     {
         printf("Failed to create window\n");
+        return;
+    }
+
+    if (add_image_to_window(wdesc, DOOMGENERIC_RESX, DOOMGENERIC_RESY, PIXEL_FORMAT_BGRA, (char *)DG_ScreenBuffer) == -1)
+    {
+        printf("Failed to add image to window\n");
         return;
     }
 }
@@ -71,6 +77,11 @@ void DG_Init()
 void DG_DrawFrame()
 {
     // printf("%d\n", ((char *)DG_ScreenBuffer)[0]);
+    if (wdesc != NULL)
+    {
+        flush_window(wdesc);
+    }
+
     if (sys_read(FDN_STDIN, &input_key, 1) == -1)
         return;
 
