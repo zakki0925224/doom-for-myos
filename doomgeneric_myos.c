@@ -8,6 +8,7 @@
 
 static uint32_t init_ticks_ms = 0;
 static WindowDescriptor *wdesc = NULL;
+static char before_input_key = '\0';
 static char input_key;
 
 #define KEYQUEUE_SIZE 16
@@ -88,8 +89,13 @@ void DG_DrawFrame()
     if (input_key == '\0')
         return;
 
+    if (input_key != before_input_key && before_input_key != '\0')
+    {
+        addKeyToQueue(0, before_input_key);
+    }
+
     addKeyToQueue(1, input_key);
-    addKeyToQueue(0, input_key);
+    before_input_key = input_key;
 }
 
 void DG_SleepMs(uint32_t ms)
