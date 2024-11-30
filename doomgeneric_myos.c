@@ -61,7 +61,7 @@ void DG_Init()
     init_ticks_ms = (uint32_t)sys_uptime();
 
     // window
-    wdesc = create_window("DOOM", 0, 0, DOOMGENERIC_RESX + 10, DOOMGENERIC_RESY + 20);
+    wdesc = create_window("DOOM", 0, 0, DOOMGENERIC_RESX + 8, DOOMGENERIC_RESY + 30);
     if (wdesc == NULL)
     {
         printf("Failed to create window\n");
