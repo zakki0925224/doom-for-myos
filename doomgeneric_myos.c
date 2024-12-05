@@ -77,11 +77,8 @@ void DG_Init()
 
 void DG_DrawFrame()
 {
-    // printf("%d\n", ((char *)DG_ScreenBuffer)[0]);
     if (wdesc != NULL)
-    {
         flush_window(wdesc);
-    }
 
     if (sys_read(FDN_STDIN, &input_key, 1) == -1)
         return;
@@ -90,9 +87,7 @@ void DG_DrawFrame()
         return;
 
     if (input_key != before_input_key && before_input_key != '\0')
-    {
         addKeyToQueue(0, before_input_key);
-    }
 
     addKeyToQueue(1, input_key);
     before_input_key = input_key;
@@ -137,9 +132,7 @@ int main(int argc, char **argv)
     doomgeneric_Create(argc, argv);
 
     while (1)
-    {
         doomgeneric_Tick();
-    }
 
     return 0;
 }
