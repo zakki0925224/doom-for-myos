@@ -17,7 +17,7 @@ LIB := -L$(LIBCDIR) -lc -L$(SFDIR)/build/Linux-x86_64-GCC $(SFDIR)/build/Linux-x
 
 CC=gcc  # gcc or g++
 LD=ld.lld
-CFLAGS=-I $(LIBCDIR) -I $(SFDIR)/source/include -O2 -Wall -g -m64 -nostdlib -fno-builtin -mno-mmx -mno-sse -msoft-float -std=c11 -DARCH_MYOS
+CFLAGS=-I $(LIBCDIR) -I $(SFDIR)/source/include -O2 -Wall -g -m64 -nostdlib -fno-builtin -fno-stack-protector -mno-mmx -mno-sse -msoft-float -std=c11 -DARCH_MYOS
 LDFLAGS=-z norelro --static --image-base=0x10000000
 
 # subdirectory for objects
