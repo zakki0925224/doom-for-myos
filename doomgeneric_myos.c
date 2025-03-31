@@ -77,9 +77,6 @@ void DG_Init()
 
 void DG_DrawFrame()
 {
-    if (wdesc != NULL)
-        flush_window(wdesc);
-
     if (sys_read(FDN_STDIN, &input_key, 1) == -1)
         return;
 
