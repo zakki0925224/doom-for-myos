@@ -13,7 +13,7 @@ endif
 
 LIBCDIR := ../../apps/libc
 SFDIR := ./berkley-softfloat-3
-LIB := -L$(LIBCDIR) -lc -L$(SFDIR)/build/Linux-x86_64-GCC $(SFDIR)/build/Linux-x86_64-GCC/softfloat.a
+LIB := $(LIBCDIR)/libc_with_main.a -L$(SFDIR)/build/Linux-x86_64-GCC $(SFDIR)/build/Linux-x86_64-GCC/softfloat.a
 
 CC=gcc  # gcc or g++
 LD=ld.lld
@@ -38,7 +38,7 @@ clean:
 
 $(OUTPUT):	$(OBJS)
 	@echo [Linking $@]
-	make -C $(LIBCDIR)
+	make -C $(LIBCDIR) app
 	make -C $(SFDIR)/build/Linux-x86_64-GCC
 	$(VB)$(LD) $(OBJS) $(LIB) -o $@ $(LDFLAGS) --Map=$(OUTPUT).map
 	@echo [Size]
