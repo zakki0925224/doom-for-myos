@@ -7,7 +7,7 @@
 #include "doomkeys.h"
 
 static uint32_t init_ticks_ms = 0;
-static WindowDescriptor *wdesc = NULL;
+static ComponentDescriptor *cdesc = NULL;
 static char before_input_key = '\0';
 static char input_key;
 
@@ -57,13 +57,13 @@ void DG_Init() {
     init_ticks_ms = (uint32_t)sys_uptime();
 
     // window
-    wdesc = create_window("DOOM", 0, 0, DOOMGENERIC_RESX + 8, DOOMGENERIC_RESY + 30);
-    if (wdesc == NULL) {
+    cdesc = create_component_window("DOOM", 0, 0, DOOMGENERIC_RESX + 8, DOOMGENERIC_RESY + 30);
+    if (cdesc == NULL) {
         printf("Failed to create window\n");
         return;
     }
 
-    if (add_image_to_window(wdesc, DOOMGENERIC_RESX, DOOMGENERIC_RESY, PIXEL_FORMAT_BGRA, (char *)DG_ScreenBuffer) == -1) {
+    if (create_component_image(cdesc, DOOMGENERIC_RESX, DOOMGENERIC_RESY, PIXEL_FORMAT_BGRA, (char *)DG_ScreenBuffer) == NULL) {
         printf("Failed to add image to window\n");
         return;
     }
