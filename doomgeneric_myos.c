@@ -7,7 +7,7 @@
 #include "doomkeys.h"
 
 static uint32_t init_ticks_ms = 0;
-static ComponentDescriptor *cdesc = NULL;
+static component_descriptor *cdesc = NULL;
 static char before_input_key = '\0';
 static char input_key;
 
