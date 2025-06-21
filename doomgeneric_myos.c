@@ -1,6 +1,5 @@
 #include <ctype.h>
 #include <stdio.h>
-#include <syscalls.h>
 #include <window.h>
 
 #include "doomgeneric.h"
@@ -70,10 +69,8 @@ void DG_Init() {
 }
 
 void DG_DrawFrame() {
-    if (sys_read(FDN_STDIN, &input_key, 1) == -1)
-        return;
-
-    if (input_key == '\0')
+    char input_key = getchar();
+    if (input_key == EOF)
         return;
 
     if (input_key == 0x03) {
