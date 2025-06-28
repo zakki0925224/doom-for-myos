@@ -73,6 +73,9 @@ void DG_DrawFrame() {
     if (input_key == EOF)
         return;
 
+    if (input_key == '\0')
+        return;
+
     if (input_key == 0x03) {
         printf("Interrupt.\n");
         exit(0);
